@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <title>Exemplary Games</title>
+</head>
+<body>
+    <header>
+        <h1>Exemplary Games</h1>
+        <nav>
+            <a href="/" class="logo"><img src="/images/exemplaryGamesLogo.png" alt="Exemplary Games Logo"></a>
+            <form class="search-bar">
+                <input type="search" name = "search" placeholder="search">
+                <button type="submit" formmethod="GET" formaction="/games"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul>
+                <li><a href="/games">Browse</a></li>
+                <li><a href="/games/new">Sell</a></li>
+                <% if(!user) { %>
+                    <li><a href="/users/new">Sign Up</a></li>
+                    <li><a href="/users/login">Login</a></li>
+                <% } else { %>
+                    <li><a href="/users/profile">Profile</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <div class="flashMessages">
+        <% if(errorMessages.length > 0) { %>
+            <% errorMessages.forEach(message=>{ %>
+                <div class="errorMsg"><%= message %></div>
+            <% }) %>
+        <% } %>
+    
+        <% if(successMessages.length > 0) { %>
+            <% successMessages.forEach(message=>{ %>
+                <div class="successMsg"><%= message %></div>
+            <% }) %>
+        <% } %>
+    </div>
+    

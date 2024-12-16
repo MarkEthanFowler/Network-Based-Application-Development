@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs')%>
+
+    <main class="profileStyle">
+        <h1>Welcome <%= user.firstName + ' ' + user.lastName %>.</h1>
+        <div class="usersProducts">
+            <% if(items.length) { %>
+                <div class="display">
+                    <h3 class="productTitle">Title</h3>
+                    <h3 class="productStatus">Status</h3>
+                    <h3 class="productAction">Actions</h3>
+                </div>
+                <% items.forEach(item=>{ %>
+                    <div class="usersListings">
+                        <a href="../games/<%= item.id %>"><p><%=item.title%></p></a>
+                        <% if(item.active === true) { %>
+                            <p class="activeStatus">Active</p>
+                        <% } else { %>
+                            <p class="activeStatus">Inactive</p>
+                        <% } %>
+                        
+                        <form>
+                            <button type="submit" formmethod="GET" formaction="../games/<%=item.id%>/edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button type="submit" formmethod="POST" formaction="../games/<%=item.id%>?_method=DELETE"><i class="fa-solid fa-trash"></i></button>
+                            
+                            <button class="viewButton" type="submit" formmethod="GET" formaction="../games/<%=item.id%>/offers" <% if(item.totalOffers <= 0) { %> disabled <% } %> </button>View Offers</button>
+                            
+                        </form>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="userErrorText">You have no games listed</p>
+            <% } %>
+            <% if(offers.length) { %>
+                <div class="displayOffer">
+                    <h3 class="offerTitle">Title</h3>
+                    <h3 class="offerStatusTitle">Status</h3>
+                    <h3 class="offerAmountTitle">Amount</h3>
+                </div>
+                <% offers.forEach(offer=>{ %>
+                    <div class="offersListing">
+                        <a href="../games/<%= offer.game._id%>"><p><%=offer.game.title%></p></a>
+                        <p class="offerStatus"><%=offer.status%></p>
+                        <p class="offerAmount">$<%=offer.amount%></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="userErrorText">You currently have no offers</p>
+            <% } %>
+        </div>
+    </main>
+
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs')%>
+    
+    <main class="itemStyle">
+        <div class="product">
+            <div class="listing">
+                <img src="<%=item.image%>" alt="GameImage">
+                <div class="productInfo">
+                    <p>Name: <%=item.title%></p>
+                    <p>Condition: <%=item.condition%></p>
+                    <p>Price: $<%=item.price%></p>
+                    <p>Seller: <%=item.seller.firstName + ' ' + item.seller.lastName %></p>
+                    <p><%=item.totalOffers%> Offer</p>
+                    <p><%=item.details%></p>
+                </div>
+            </div>
+            <div class="offerSection">
+                <div class="currentMax">
+                    <% if(item.active === true) { %>
+                        <% if(item.maxOffer === 0) { %>
+                            <p class="descriptionText">There are currently no offers for this game</p>
+                        <% } else { %>
+                            <p class="descriptionText">This games current highest offer is $<%=item.maxOffer%></p>
+                        <% } %>
+                    <% } else { %>
+                        <p class="descriptionText">This game is no longer available.</p>
+                    <% } %>
+                    
+                    
+                </div>
+                <% if(item.active === true) { %>
+                    <form method="POST" action="/games/<%= item.id%>/offers/" class="offerform">
+                        <label for="offerbox">Enter your offer here:</label>
+                        <div class="submitOffer">
+                            <input type="number" name="amount" id="offerbox" min="0.01">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        
+                    </form>
+                <% } %>
+                   
+            </div>
+            
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

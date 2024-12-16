@@ -1,0 +1,20 @@
+<%- include('../partials/header.ejs') %>
+
+    <main class="loginStyle">
+        <h1>Already have an account? Go Ahead and Log in!</h1>
+        <form action="/users/login" method="POST">
+            <div class="userName">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="email" required>
+            </div>
+            <div class="userPassword">
+                <label for="userpassword">Password:</label>
+                <input type="text" id="userpassword" name="password" required>
+            </div>
+            <div class="loginButton">
+                <button>Login</button>
+            </div>
+        </form>
+    </main>
+
+<%- include('../partials/footer.ejs') %>

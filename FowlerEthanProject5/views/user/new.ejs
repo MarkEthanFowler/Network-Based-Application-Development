@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+
+    <main class="newUserStyle">
+        <h1>Ready to Sign up!</h1>
+        <p>Enter your information below</p>
+        <form action="/users" method="POST">
+
+            <div class="userFirstName">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstName" required>
+            </div>
+            <div class="userLastName">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastName">
+            </div>
+            <div class="userEmail">
+                <label for="Email">Email:</label>
+                <input type="text" id="Email" name="email" required>
+            </div>
+            <div class="userPassword">
+                <label for="Password">Password:</label>
+                <input type="text" id="Password" name="password" required>
+            </div>
+            <div class="userSubmit">
+                <button>Create</button>
+            </div>            
+        </form>
+    </main>
+
+<%- include('../partials/footer.ejs')%>

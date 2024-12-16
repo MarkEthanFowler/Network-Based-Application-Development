@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs')%>
+<main class="offerStyle">
+    <div class="usersOffers">
+        <% if(offers.length) { %>
+            <h1>Your offers for <%=offers[0].game.title%></h1>
+            <div class="displayAll">
+                <h3 class="buyerHeader">Buyer</h3>
+                <h3 class="amountHeader">Amount</h3>
+                <h3 class="acceptHeader">Action</h3>
+            </div>
+            <% offers.forEach(offer=>{ %>
+                <div class="allOffers">
+                    <p class="buyerField"><%=offer.buyer.firstName%> <%= offer.buyer.lastName %></p>
+                    <p class="amountField">$<%=offer.amount%></p>
+                    <% if(offer.status === 'pending'){ %>
+                        <form>
+                            <button class="acceptButton" type="submit" formmethod="GET" formaction="offers/<%=offer.id%>">Accept</button>
+                        </form>
+                    <% } else { %>
+                        <p class="statusParagraph"><%=offer.status%></p>
+                    <% } %>
+                    
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="userErrorText">No offers currently</p>
+        <% } %>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>

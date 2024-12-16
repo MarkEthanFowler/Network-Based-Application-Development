@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%>
+
+    <main class="itemsStyle">
+        <div class="products">
+            <% if(items.length) {%>
+                <% items.sort((a, b) => a.price - b.price)%>
+                <% items.forEach(item=>{%>
+                    <% if(item.active === true) { %>
+                        <a href="/games/<%=item.id%>"><div class="listings">
+                            <img src="<%=item.image%>" alt="GameImage">
+                            <div class="productInfo">
+                                <p><%=item.title%></p>
+                                <p><%=item.condition%></p>
+                                <p>$<%=item.price%></p>
+                                <p><%=item.totalOffers%> Offers</p>
+                            </div>
+                        </div></a>
+                    <% } %>
+                    
+                <%});
+            } else {%>
+                <p class="errorText">There are no items to display</p>
+            <%}%>
+            
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%>
+
+    <main class="newStyle">
+        <h1>Want to edit you listing At Exemplary Games</h1>
+        <p>It's easy just change the information for your item</p>
+        <form method = "POST" action = "/games/<%= item.id%>?_method=PUT" class="new-form" enctype="multipart/form-data">
+            <div class="condition">
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="Near Mint" <%if(item.condition === "Near Mint"){%> selected <%}%>>Near Mint</option>
+                    <option value="Lightly Used" <%if(item.condition === "Lightly Used"){%> selected <%}%>>Lightly Used</option>
+                    <option value="Moderately Used" <%if(item.condition === "Moderately Used"){%> selected <%}%>>Moderately Used</option>
+                    <option value="Heavily Used" <%if(item.condition === "Heavily Used"){%> selected <%}%>>Heavily Used</option>
+                    <option value="Damaged" <%if(item.condition === "Damaged"){%> selected <%}%>>Damaged</option>
+                </select>
+            </div>
+            <div class="title">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="<%= item.title%>" required>
+            </div>
+            <div class="price">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" value="<%= item.price%>" required>
+            </div>
+            <div class="details">
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" rows="10" cols="50" required><%= item.details%></textarea>
+            </div>
+
+            <div class="imageFile">
+                <label for="imageFile">Image:</label>
+                <input type="file" id="imageFile" name="image" accept="image/png, image/jpeg" value="<%= item.image%>" required>
+            </div>
+
+            <div class="submit">
+                <input type="submit">
+            </div>
+        </form>
+    </main>
+    <%- include('../partials/footer.ejs')%>

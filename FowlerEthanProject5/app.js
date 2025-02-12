@@ -17,8 +17,8 @@ const app = express();
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
-const mongoUri = 'mongodb+srv://admin:admin123@cluster0.ysefp.mongodb.net/project5?retryWrites=true&w=majority&appName=Cluster0';
-//'mongodb+srv://admin:admin123@cluster0.ysefp.mongodb.net/project5?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = 'HERE';
+//;
 
 //connect to MongoDB
 mongoose.connect(mongoUri)
@@ -41,7 +41,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {maxAge: 3600000},
-    store: new MongoStore({mongoUrl: 'mongodb+srv://admin:admin123@cluster0.ysefp.mongodb.net/project5?retryWrites=true&w=majority&appName=Cluster0'})
+    store: new MongoStore({mongoUrl: 'HERE'})
 }))
 
 app.use(flash());
